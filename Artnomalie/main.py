@@ -11,7 +11,7 @@ score = 0
 win = False
 game.bestscores = read_csv("hs.csv") #récupère les scores stockés
 warningremoval = 0 # le compteur de temps pour le warning
-music("Textures\music\Bolero.mp3", True) #Lance la musique dans une boucle infinie
+music("Textures/music/Bolero.mp3", True) #Lance la musique dans une boucle infinie
 
 loadmap([game.backgroundini,game.fade])
 fade_out(game.fade)
@@ -153,7 +153,7 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                     game.drawed.insert(-1, game.indicator)
                 draw()
                 fade_out(game.fade)
-                music("Textures\music\Für_Elise.mp3", True)
+                music("Textures/music/Für_Elise.mp3", True)
                 pygame.event.clear()
             elif IsClicked(event, game.exitbutton): #bouton pour reculer si y a une anomalie
 
@@ -218,7 +218,7 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                 pygame.time.delay(1000)
                 zoom(game.joconde_zoom)
                 if anomalyid == 2:
-                    music("Textures\music\creepy_sound.mp3", True)
+                    music("Textures/music/creepy_sound.mp3", True)
                 fade_out(game.fade)
                 pygame.event.clear()
 
