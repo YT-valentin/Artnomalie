@@ -168,7 +168,7 @@ def anomalies(anomaly): #permet de choisir l'anomalie (elle ne permet pas de cho
     #permet de choisir l'anomaly
     if anomaly:
         #print("ANOMALY")
-        anomalyid = random.randint(0,len(repertoire_annomalie)) #remplacer le dernier chiffre par le nomdre d'anomaly (decaler de 1 pour une recherche correcte dans la liste)
+        anomalyid = random.randint(0,len(repertoire_annomalie)-1) #remplacer le dernier chiffre par le nomdre d'anomaly (decaler de 1 pour une recherche correcte dans la liste)
         if anomalyid >= 2: #dans le cas ou les anomalies demande le même code
             repertoire_annomalie[anomalyid][1].image = pygame.image.load(repertoire_annomalie[anomalyid][0])      #affiche l'annomalie
             repertoire_annomalie[anomalyid][3].image = pygame.image.load(repertoire_annomalie[anomalyid][2])      #affiche l'annomalie dans le zoom
