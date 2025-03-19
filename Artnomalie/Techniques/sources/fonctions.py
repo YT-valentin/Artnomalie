@@ -155,6 +155,8 @@ def anomalies(anomaly): #permet de choisir l'anomalie (elle ne permet pas de cho
     game.matisse_zoom.image = pygame.image.load("../data/Tableau/Matisse_big.png")
     game.monet_zoom.image = pygame.image.load("../data/Tableau/Monet_big.jpg")
     game.picasso_zoom.image = pygame.image.load("../data/Tableau/picasso_zoom.png")
+    game.joconde.rect.x = 582
+    game.joconde.rect.y = 269
     music("../data/music/Für_Elise.mp3", True)
     #permet de choisir l'anomaly
     if anomaly:
