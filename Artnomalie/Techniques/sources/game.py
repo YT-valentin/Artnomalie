@@ -157,15 +157,15 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
             #Bouton Play
         self.playButton = Button()
         self.playButton.rect.x = 350
-        self.playButton.rect.y = 600
+        self.playButton.rect.y = 400
         self.playButton.image = pygame.image.load("../data/UI/playpainting.png")
         self.playButton.rect.width = 300
         self.playButton.rect.height = 180
 
             # Score
         self.scorebutton = Button()
-        self.scorebutton.rect.x = 25
-        self.scorebutton.rect.y = 400
+        self.scorebutton.rect.x = 350
+        self.scorebutton.rect.y = 600
         self.scorebutton.image = pygame.image.load("../data/UI/scorepainting.png")
         self.scorebutton.rect.width = 300
         self.scorebutton.rect.height = 180
