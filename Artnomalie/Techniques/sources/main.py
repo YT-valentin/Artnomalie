@@ -4,14 +4,14 @@ from game import Game
 import random
 from fonctions import*
 
-anomalyluck = 50 #pourcentage d'avoir une anomaly
+anomalyluck = 50 #pourcentage de chance d'avoir une anomalie
 anomaly = False
-anomalyid = 0 #peut etre utile pour coder certaine anomaly, elle contien le numero de l'anomalie precise
+anomalyid = 0 #Contien le numero de l'anomalie
 score = 0
 win = False
-game.bestscores = read_csv("../data/hs.csv") #récupère les scores stockés
-warningremoval = 0 # le compteur de temps pour le warning
-music("../data/music/Bolero.mp3", True) #Lance la musique dans une boucle infinie
+game.bestscores = read_csv("../data/hs.csv") #récupère les scores stockés dans le fichier csv
+warningremoval = 0 # Initialisation du compteur de temps pour le warning
+music("../data/music/Bolero.mp3", True) #Lance la musique du menu dans une boucle infinie
 
 loadmap([game.backgroundini,game.fade])
 fade_out(game.fade)
@@ -26,13 +26,13 @@ while running: #boucle principale (évite que la page se ferme toute seule)
 
     if game.warning in  game.drawed:
         warningremoval += 16
-        if warningremoval >=15000: # pour enlever le warning après 5 secondes
+        if warningremoval >=15000: #Enleve le warning après 5 secondes
              game.warning.image.set_alpha(0)
         else:
             game.warning.image.set_alpha(255)
-    draw() #dessine les objets se trouvant dans draw
+    draw() #dessine les objets se trouvant dans la liste draw
 
-    if win == True : #ce qui s'active si on gagne
+    if win == True : #S'active si on gagne
         game.restart_button.image.set_alpha(0)
         game.paycheck.image.set_alpha(0)
         music("../data/music/victorysound.mp3", False)
@@ -52,8 +52,8 @@ while running: #boucle principale (évite que la page se ferme toute seule)
 
     for event in pygame.event.get(): #Récupère tout les évènement du joueur
 
-        if event.type == pygame.QUIT: #Si le joueur appuis sur la croix
-            lose() #update le score
+        if event.type == pygame.QUIT: #S'active si le joueur appuis sur la croix
+            lose() #met le score a jour
             running=False
             pygame.quit()
             break
