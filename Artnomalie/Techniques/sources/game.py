@@ -123,6 +123,10 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.backgroundend = Background()
         self.backgroundend.image = pygame.image.load("../data/Background/endbg.png")
 
+            #texte credit
+        self.textecredit = Background()
+        self.textecredit.image = pygame.image.load("../data/Background/creditbg.png")
+
         self.paycheck = Button()
         self.paycheck.rect.x = 100
         self.paycheck.rect.y = 200
@@ -145,14 +149,6 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.logo.rect.width = 0
         self.logo.rect.height = 0
 
-            #exit (texture temporaire)
-        self.exitbutton = Button()
-        self.exitbutton.rect.x=50
-        self.exitbutton.rect.y= 650
-        self.exitbutton.image = pygame.image.load("../data/UI/bouton_anomalies.png")
-        self.exitbutton.rect.width = 150
-        self.exitbutton.rect.height = 90
-
             #Bouton Play
         self.playButton = Button()
         self.playButton.rect.x = 350
@@ -160,32 +156,6 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.playButton.image = pygame.image.load("../data/UI/playpainting.png")
         self.playButton.rect.width = 300
         self.playButton.rect.height = 180
-            #bouton suivant
-
-        self.continuebutton = Button()
-        self.continuebutton.rect.x=810
-        self.continuebutton.rect.y= 650
-        self.continuebutton.rect.width = 200
-        self.continuebutton.rect.height = 120
-            #bouton retour
-        self.button_retour = Button()
-        self.button_retour.rect.x=50
-        self.button_retour.rect.y= 650
-        self.button_retour.image = pygame.image.load("../data/UI/fleche_retour.png") #change l'image de base
-        self.button_retour.rect.width = 200
-        self.button_retour.rect.height = 120
-
-            #Fond du score
-        self.fond_score = Background()
-        self.fond_score.rect.x = 412
-        self.fond_score.rect.y = -5
-        self.fond_score.image = pygame.image.load("../data/Background/fond_score.png")
-            #Texte
-        self.ScoreDisplay = Texte()
-        self.ScoreDisplay.text = "0"
-        self.ScoreDisplay.pos = (500,30)
-        self.ScoreDisplay.fontSize = 50
-
 
             # Score
         self.scorebutton = Button()
@@ -203,18 +173,6 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.credits.rect.width = 300
         self.credits.rect.height = 180
 
-            #texte credit
-        self.textecredit = Background()
-        self.textecredit.image = pygame.image.load("../data/Background/creditbg.png")
-
-            # Croix retour credits
-        self.RetourCredits = Button()
-        self.RetourCredits.rect.x = 850
-        self.RetourCredits.rect.y = 5
-        self.RetourCredits.image = pygame.image.load("../data/UI/retourpainting.png")
-        self.RetourCredits.rect.width = 100
-        self.RetourCredits.rect.height = 100
-
             #Leave Button
         self.Leave = Button()
         self.Leave.rect.x = 675
@@ -222,10 +180,26 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.Leave.image = pygame.image.load("../data/UI/exitpainting.png")
         self.Leave.rect.width = 300
         self.Leave.rect.height = 180
+            #bouton suivant
 
-        self.menuBackground = Background()
-        self.menuBackground.image = pygame.image.load("../data/Background/menubg.png")
-        self.menuBackground.rect.y = 0
+        self.continuebutton = Button()
+        self.continuebutton.rect.x=810
+        self.continuebutton.rect.y= 650
+        self.continuebutton.rect.width = 200
+        self.continuebutton.rect.height = 120
+            #bouton retour
+        self.button_retour = Button()
+        self.button_retour.rect.x=50
+        self.button_retour.rect.y= 650
+        self.button_retour.image = pygame.image.load("../data/UI/fleche_retour.png") #change l'image de base
+        self.button_retour.rect.width = 200
+        self.button_retour.rect.height = 120
+        #SCORE
+            #Fond du score
+        self.fond_score = Background()
+        self.fond_score.rect.x = 412
+        self.fond_score.rect.y = -5
+        self.fond_score.image = pygame.image.load("../data/Background/fond_score.png")
 
         #highscore
         self.Top1 = Texte()
@@ -252,6 +226,27 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.Top5.text = "Top 5: 0"
         self.Top5.pos = (30,430)
         self.Top5.fontSize = 100
+            #Texte
+        self.ScoreDisplay = Texte()
+        self.ScoreDisplay.text = "0"
+        self.ScoreDisplay.pos = (500,30)
+        self.ScoreDisplay.fontSize = 50
+
+            # Croix retour credits
+        self.RetourCredits = Button()
+        self.RetourCredits.rect.x = 850
+        self.RetourCredits.rect.y = 5
+        self.RetourCredits.image = pygame.image.load("../data/UI/retourpainting.png")
+        self.RetourCredits.rect.width = 100
+        self.RetourCredits.rect.height = 100
+
+            #exit (texture temporaire)
+        self.exitbutton = Button()
+        self.exitbutton.rect.x=50
+        self.exitbutton.rect.y= 650
+        self.exitbutton.image = pygame.image.load("../data/UI/bouton_anomalies.png")
+        self.exitbutton.rect.width = 150
+        self.exitbutton.rect.height = 90
 
         # mode menu
         self.modeselect = Button()
