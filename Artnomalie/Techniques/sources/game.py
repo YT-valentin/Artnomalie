@@ -104,6 +104,9 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.cri_zoom.rect.y = 100
 
         #FOND
+
+        self.menuBackground = Background()
+        self.menuBackground.image = pygame.image.load("../data/Background/menubg.png")
         
         self.zoombg = Background()
         self.zoombg.image = pygame.image.load("../data/Background/zoombg.png")
@@ -134,13 +137,29 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.drawed = []
 
         #User Interface
-            #logo
+            #MENU PRINCIPALE
         self.logo = Button()
         self.logo.image = pygame.image.load("../data/UI/artnomalielogo.png")
         self.logo.rect.x=10
         self.logo.rect.y= 30
         self.logo.rect.width = 0
         self.logo.rect.height = 0
+
+            #exit (texture temporaire)
+        self.exitbutton = Button()
+        self.exitbutton.rect.x=50
+        self.exitbutton.rect.y= 650
+        self.exitbutton.image = pygame.image.load("../data/UI/bouton_anomalies.png")
+        self.exitbutton.rect.width = 150
+        self.exitbutton.rect.height = 90
+
+            #Bouton Play
+        self.playButton = Button()
+        self.playButton.rect.x = 350
+        self.playButton.rect.y = 400
+        self.playButton.image = pygame.image.load("../data/UI/playpainting.png")
+        self.playButton.rect.width = 300
+        self.playButton.rect.height = 180
             #bouton suivant
 
         self.continuebutton = Button()
@@ -155,13 +174,7 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.button_retour.image = pygame.image.load("../data/UI/fleche_retour.png") #change l'image de base
         self.button_retour.rect.width = 200
         self.button_retour.rect.height = 120
-            #exit (texture temporaire)
-        self.exitbutton = Button()
-        self.exitbutton.rect.x=50
-        self.exitbutton.rect.y= 650
-        self.exitbutton.image = pygame.image.load("../data/UI/bouton_anomalies.png")
-        self.exitbutton.rect.width = 150
-        self.exitbutton.rect.height = 90
+
             #Fond du score
         self.fond_score = Background()
         self.fond_score.rect.x = 412
@@ -173,13 +186,6 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.ScoreDisplay.pos = (500,30)
         self.ScoreDisplay.fontSize = 50
 
-            #Bouton Play
-        self.playButton = Button()
-        self.playButton.rect.x = 350
-        self.playButton.rect.y = 400
-        self.playButton.image = pygame.image.load("../data/UI/playpainting.png")
-        self.playButton.rect.width = 300
-        self.playButton.rect.height = 180
 
             # Score
         self.scorebutton = Button()
