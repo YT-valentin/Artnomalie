@@ -42,42 +42,42 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.cri.rect.height = 156
 
         #section pour les tableaux zoomés
-        self.joconde_zoom = Background()
+        self.joconde_zoom = Tableau()
         self.joconde_zoom.image = pygame.image.load("../data/Tableau/joconde_zoom.png")
         self.joconde_zoom.rect.x = 250
         self.joconde_zoom.rect.y = 100
 
-        self.delacroix_zoom = Background()
+        self.delacroix_zoom = Tableau()
         self.delacroix_zoom.image = pygame.image.load("../data/Tableau/Eugene_delacroix_big.png")
         self.delacroix_zoom.rect.x = 250
         self.delacroix_zoom.rect.y = 200
 
-        self.vermeer_zoom = Background()
+        self.vermeer_zoom = Tableau()
         self.vermeer_zoom.image = pygame.image.load("../data/Tableau/Vermeer_big.jpg")
         self.vermeer_zoom.rect.x = 250
         self.vermeer_zoom.rect.y = 200
 
-        self.vangogh_zoom = Background()
+        self.vangogh_zoom = Tableau()
         self.vangogh_zoom.image = pygame.image.load("../data/Tableau/Van_gogh_big.jpg")
         self.vangogh_zoom.rect.x = 250
         self.vangogh_zoom.rect.y = 200
 
-        self.picasso_zoom = Background()
+        self.picasso_zoom = Tableau()
         self.picasso_zoom.image = pygame.image.load("../data/Tableau/picasso_zoom.png")
         self.picasso_zoom.rect.x = 180
         self.picasso_zoom.rect.y = 220
 
-        self.matisse_zoom = Background()
+        self.matisse_zoom = Tableau()
         self.matisse_zoom.image = pygame.image.load("../data/Tableau/Matisse_big.png")
         self.matisse_zoom.rect.x = 180
         self.matisse_zoom.rect.y = 180
 
-        self.monet_zoom = Background()
+        self.monet_zoom = Tableau()
         self.monet_zoom.image = pygame.image.load("../data/Tableau/Monet_big.jpg")
         self.monet_zoom.rect.x = 180
         self.monet_zoom.rect.y = 150
 
-        self.cri_zoom = Background()
+        self.cri_zoom = Tableau()
         self.cri_zoom.image = pygame.image.load("../data/Tableau/cri_zoom.png")
         self.cri_zoom.rect.x = 250
         self.cri_zoom.rect.y = 100
@@ -283,21 +283,21 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.indicator.rect.x = 1002
 
 
-        self.picasso = Background()
+        self.picasso = Tableau()
         self.picasso.image = pygame.image.load("../data/Tableau/picasso.png")
         self.picasso.rect.x = 91
         self.picasso.rect.y = 208
         self.picasso.rect.width = 54
         self.picasso.rect.height = 55
 
-        self.matisse = Background()
+        self.matisse = Tableau()
         self.matisse.image = pygame.image.load("../data/Tableau/matisse.png")
         self.matisse.rect.x = 158
         self.matisse.rect.y = 231
         self.matisse.rect.width = 53
         self.matisse.rect.height = 145
 
-        self.monet = Background()
+        self.monet = Tableau()
         self.monet.image = pygame.image.load("../data/Tableau/monet.png")
         self.monet.rect.x = 92
         self.monet.rect.y = 278
