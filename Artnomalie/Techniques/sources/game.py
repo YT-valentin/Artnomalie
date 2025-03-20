@@ -5,7 +5,7 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
 
     def __init__(self):
 
-        #On créer les tableau à partir de la classe Tableau
+        #Tableaux
         self.joconde = Tableau()
         self.joconde.image = pygame.image.load("../data/Tableau/joconde.png")
         self.joconde.rect.x = 852
@@ -40,6 +40,27 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.cri.rect.y = 279
         self.cri.rect.width = 60
         self.cri.rect.height = 156
+        
+        self.picasso = Tableau()
+        self.picasso.image = pygame.image.load("../data/Tableau/picasso.png")
+        self.picasso.rect.x = 91
+        self.picasso.rect.y = 208
+        self.picasso.rect.width = 54
+        self.picasso.rect.height = 55
+
+        self.matisse = Tableau()
+        self.matisse.image = pygame.image.load("../data/Tableau/matisse.png")
+        self.matisse.rect.x = 158
+        self.matisse.rect.y = 231
+        self.matisse.rect.width = 53
+        self.matisse.rect.height = 145
+
+        self.monet = Tableau()
+        self.monet.image = pygame.image.load("../data/Tableau/monet.png")
+        self.monet.rect.x = 92
+        self.monet.rect.y = 278
+        self.monet.rect.width = 59
+        self.monet.rect.height = 165
 
         #section pour les tableaux zoomés
         self.joconde_zoom = Tableau()
@@ -82,22 +103,20 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.cri_zoom.rect.x = 250
         self.cri_zoom.rect.y = 100
 
-        #table basse
-        self.table = Tableau()
-        self.table.image = pygame.image.load("../data/Tableau/table_basse.png")
-        self.table.rect.x = 412
-        self.table.rect.y = 580
-        self.table.rect.width = 222
-        self.table.rect.height = 74
-        #section des backgroud
+        #FOND
+        
         self.zoombg = Background()
         self.zoombg.image = pygame.image.load("../data/Background/zoombg.png")
+        
         self.background1 = Background()
         self.background1.image = pygame.image.load("../data/Background/salle1.jpg")
+        
         self.fade = Background()
         self.fade.image = pygame.image.load("../data/Background/fade1.png")
+        
         self.backgroundini = Background()
         self.backgroundini.image = pygame.image.load("../data/UI/nytelogo.png")
+        
         self.backgroundend = Background()
         self.backgroundend.image = pygame.image.load("../data/Background/endbg.png")
 
@@ -106,7 +125,7 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.paycheck.rect.y = 200
         self.paycheck.image = pygame.image.load("../data/UI/paycheck.png")
 
-        #On initialise le score a zéro
+        #VARIABLE
         self.score = -1
         #On choisit le mode
         self.mode = "Story"
@@ -201,13 +220,7 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.menuBackground = Background()
         self.menuBackground.image = pygame.image.load("../data/Background/menubg.png")
         self.menuBackground.rect.y = 0
-        self.skulltop = Background()
-        self.skulltop.image = pygame.image.load("../data/UI/skulltop.png")
-        self.skullbottom = Button()
-        self.skullbottom.image = pygame.image.load("../data/UI/skullbottom.png")
-        self.skullbottom.rect.y = 0
-        self.skullbottom.rect.x = 0
-        self.skullbottom.rect.width = 0
+
         #highscore
         self.Top1 = Texte()
         self.Top1.text = "Top 1: 0"
@@ -276,33 +289,6 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.gotext.text = ""
         self.gotext.pos = (170,30)
         self.gotext.fontSize = 100
-        #star symbol
-        self.indicator = Button()
-        self.indicator.image = pygame.image.load("../data/UI/starsymbol.png")
-        self.indicator.rect.height = 0
-        self.indicator.rect.x = 1002
-
-
-        self.picasso = Tableau()
-        self.picasso.image = pygame.image.load("../data/Tableau/picasso.png")
-        self.picasso.rect.x = 91
-        self.picasso.rect.y = 208
-        self.picasso.rect.width = 54
-        self.picasso.rect.height = 55
-
-        self.matisse = Tableau()
-        self.matisse.image = pygame.image.load("../data/Tableau/matisse.png")
-        self.matisse.rect.x = 158
-        self.matisse.rect.y = 231
-        self.matisse.rect.width = 53
-        self.matisse.rect.height = 145
-
-        self.monet = Tableau()
-        self.monet.image = pygame.image.load("../data/Tableau/monet.png")
-        self.monet.rect.x = 92
-        self.monet.rect.y = 278
-        self.monet.rect.width = 59
-        self.monet.rect.height = 165
 
         self.rules = Button()
         self.rules.image = pygame.image.load("../data/UI/credits.png")
@@ -317,3 +303,28 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.rulestext.rect.y = 0
         self.rulestext.rect.width = 100
         self.rulestext.rect.height = 96
+
+        # AUTRE
+
+                #table basse
+        self.table = Tableau()
+        self.table.image = pygame.image.load("../data/Tableau/table_basse.png")
+        self.table.rect.x = 412
+        self.table.rect.y = 580
+        self.table.rect.width = 222
+        self.table.rect.height = 74
+        
+        self.skulltop = Background()
+        self.skulltop.image = pygame.image.load("../data/UI/skulltop.png")
+
+        self.skullbottom = Button()
+        self.skullbottom.image = pygame.image.load("../data/UI/skullbottom.png")
+        self.skullbottom.rect.y = 0
+        self.skullbottom.rect.x = 0
+        self.skullbottom.rect.width = 0
+
+        #star symbol
+        self.indicator = Button()
+        self.indicator.image = pygame.image.load("../data/UI/starsymbol.png")
+        self.indicator.rect.height = 0
+        self.indicator.rect.x = 1002
