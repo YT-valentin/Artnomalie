@@ -12,5 +12,5 @@ Le jeu se joue seulement à la souris (seul exception étant la touche échap lo
 
 
 ### Contribution : 
-L'entièreté du code à été écrit par l'équipe du projet. Nous avons appris le module Pygame en suivant les tutoriels de [Graven - Développement](https://www.youtube.com/@Gravenilvectuto). Certaines textures ont été faites grâce à de l'IA.
+L'entièreté du code à été écrit par l'équipe du projet. Nous avons appris l'utilisation de Pygame grâce à plusieurs tutoriels sur [Youtube](https://www.youtube.com/). Certaines textures ont été faites grâce à de l'IA.
 
