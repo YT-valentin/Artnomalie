@@ -1,8 +1,9 @@
 import pygame
 
-#creer une classe pour les tableaux
 class Tableau(pygame.sprite.Sprite):
+    """Classe pour les tableaux"""
     def __init__(self): # ce qui va se passer lors du lancement du jeu
+        """Initialise un nouveau tableau"""
         super().__init__() #indispensable
         self.anomaly = False
         self.image = pygame.image.load("../data/Tableau/joconde_lowquality.png")
@@ -13,7 +14,9 @@ class Tableau(pygame.sprite.Sprite):
         self.rect.height =0 #hitbox en hauteur
         
 class Background(pygame.sprite.Sprite):
+    """Classe pour les fonds"""
     def __init__(self):
+        """Initialise un nouveau fond"""
         super().__init__()
         self.image = pygame.image.load("../data/Tableau/joconde_lowquality.png")
         self.rect=self.image.get_rect()
@@ -22,7 +25,9 @@ class Background(pygame.sprite.Sprite):
         self.width = 0
 
 class Button(pygame.sprite.Sprite):
+    """Classe pour les boutons"""
     def __init__(self):
+        """Initialise un nouveau bouton"""
         super().__init__()
         self.image = pygame.image.load("../data/UI/fleche_salle.png")
         self.rect=self.image.get_rect()
@@ -32,7 +37,9 @@ class Button(pygame.sprite.Sprite):
         self.rect.height =0 #hitbox en hauteur
 
 class Texte():
+    """Classe pour les textes"""
     def __init__(self):
+        """Initialise un nouveau texte"""
         super().__init__()
         self.fontSize = 30
         self.police = pygame.font.Font("../data/Font/RasterForge.ttf", self.fontSize)
