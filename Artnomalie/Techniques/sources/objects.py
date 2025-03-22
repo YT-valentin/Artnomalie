@@ -1,7 +1,7 @@
 import pygame
 
 class Tableau(pygame.sprite.Sprite):
-    """Classe pour les tableaux"""
+    """Class pour les tableaux"""
     def __init__(self): # ce qui va se passer lors du lancement du jeu
         """Initialise un nouveau tableau"""
         super().__init__() #indispensable
@@ -14,7 +14,7 @@ class Tableau(pygame.sprite.Sprite):
         self.rect.height =0 #hitbox en hauteur
         
 class Background(pygame.sprite.Sprite):
-    """Classe pour les fonds"""
+    """Class pour les fonds"""
     def __init__(self):
         """Initialise un nouveau fond"""
         super().__init__()
@@ -25,7 +25,7 @@ class Background(pygame.sprite.Sprite):
         self.width = 0
 
 class Button(pygame.sprite.Sprite):
-    """Classe pour les boutons"""
+    """Class pour les boutons"""
     def __init__(self):
         """Initialise un nouveau bouton"""
         super().__init__()
@@ -37,7 +37,7 @@ class Button(pygame.sprite.Sprite):
         self.rect.height =0 #hitbox en hauteur
 
 class Texte():
-    """Classe pour les textes"""
+    """Class pour les textes"""
     def __init__(self):
         """Initialise un nouveau texte"""
         super().__init__()
