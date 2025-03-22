@@ -5,8 +5,7 @@ class Game:
 #Merci de créer tout objets dans ce fichier !
 
     def __init__(self):
-
-        #Tableaux
+        #On créer ici tous les tableaux 
         self.joconde = Tableau()
         self.joconde.image = pygame.image.load("../data/Tableau/joconde.png")
         self.joconde.rect.x = 852
@@ -63,7 +62,7 @@ class Game:
         self.monet.rect.width = 59
         self.monet.rect.height = 165
 
-        #section pour les tableaux zoomés
+        #On créer ici tous les tableaux zoomés
         self.joconde_zoom = Tableau()
         self.joconde_zoom.image = pygame.image.load("../data/Tableau/joconde_zoom.png")
         self.joconde_zoom.rect.x = 250
@@ -104,7 +103,7 @@ class Game:
         self.cri_zoom.rect.x = 250
         self.cri_zoom.rect.y = 100
 
-        #FOND
+        #On créer ici tous les fond
         self.menuBackground = Background()
         self.menuBackground.image = pygame.image.load("../data/Background/menubg.png")
         
@@ -132,15 +131,15 @@ class Game:
         self.paycheck.rect.y = 200
         self.paycheck.image = pygame.image.load("../data/UI/paycheck.png")
 
-        #VARIABLE
+        #On créer ici toutes les variables
         self.score = -1
         #On choisit le mode
         self.mode = "Story"
-        #variable contenant tout les scores
+        #variable qui contient tous les scores
         self.bestscores = []
         self.drawed = []
 
-        #User Interface
+        #Interface utilisateur
             #MENU PRINCIPALE
         self.logo = Button()
         self.logo.image = pygame.image.load("../data/UI/artnomalielogo.png")
@@ -157,7 +156,7 @@ class Game:
         self.playButton.rect.width = 300
         self.playButton.rect.height = 180
 
-            # Score
+            #Score
         self.scorebutton = Button()
         self.scorebutton.rect.x = 350
         self.scorebutton.rect.y = 600
@@ -165,7 +164,7 @@ class Game:
         self.scorebutton.rect.width = 300
         self.scorebutton.rect.height = 180
 
-            # Credits
+            #Credits
         self.credits = Button()
         self.credits.rect.x = 25
         self.credits.rect.y = 600
@@ -180,20 +179,22 @@ class Game:
         self.Leave.image = pygame.image.load("../data/UI/exitpainting.png")
         self.Leave.rect.width = 300
         self.Leave.rect.height = 180
-            #bouton suivant
-
+        
+            #Bouton suivant
         self.continuebutton = Button()
         self.continuebutton.rect.x=810
         self.continuebutton.rect.y= 650
         self.continuebutton.rect.width = 200
         self.continuebutton.rect.height = 120
-            #bouton retour
+        
+            #Bouton retour
         self.button_retour = Button()
         self.button_retour.rect.x=50
         self.button_retour.rect.y= 650
         self.button_retour.image = pygame.image.load("../data/UI/fleche_retour.png") #change l'image de base
         self.button_retour.rect.width = 200
         self.button_retour.rect.height = 120
+        
         #SCORE
             #Fond du score
         self.fond_score = Background()
@@ -201,7 +202,7 @@ class Game:
         self.fond_score.rect.y = -5
         self.fond_score.image = pygame.image.load("../data/Background/fond_score.png")
 
-        #highscore
+        #Classement des meilleurs scores
         self.Top1 = Texte()
         self.Top1.text = "Top 1: 0"
         self.Top1.pos = (30,30)
@@ -226,6 +227,7 @@ class Game:
         self.Top5.text = "Top 5: 0"
         self.Top5.pos = (30,430)
         self.Top5.fontSize = 100
+        
             #Texte
         self.ScoreDisplay = Texte()
         self.ScoreDisplay.text = "0"
@@ -240,7 +242,7 @@ class Game:
         self.RetourCredits.rect.width = 100
         self.RetourCredits.rect.height = 100
 
-            #exit (texture temporaire)
+            #exit
         self.exitbutton = Button()
         self.exitbutton.rect.x=50
         self.exitbutton.rect.y= 650
@@ -254,6 +256,7 @@ class Game:
         self.modeselect.rect.width = 0
         self.modeselect.rect.x = 200
         self.modeselect.rect.y = 150
+        
         #story mode button
         self.storybutton = Button()
         self.storybutton.image = pygame.image.load("../data/UI/story_button.png")
@@ -305,8 +308,7 @@ class Game:
         self.rulestext.rect.width = 100
         self.rulestext.rect.height = 96
 
-        # AUTRE
-
+        #On créer aussi tous les autres éléments 
                 #table basse
         self.table = Tableau()
         self.table.image = pygame.image.load("../data/Tableau/table_basse.png")
