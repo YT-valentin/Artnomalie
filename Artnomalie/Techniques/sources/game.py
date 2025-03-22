@@ -2,9 +2,10 @@ import pygame
 from objects import *
 
 class Game: 
-#Merci de créer tout objets dans ce fichier !
+"""Class pour les objets"""
 
     def __init__(self):
+        """On créer ici tous les objets"""
         #On créer ici tous les tableaux 
         self.joconde = Tableau()
         self.joconde.image = pygame.image.load("../data/Tableau/joconde.png")
