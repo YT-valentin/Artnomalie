@@ -4,63 +4,7 @@ import random
 from game import Game
 from csv import *
 
-#Merci d'écrire toute fonction dans ce document
-def read_csv(filename): #lire n'importe quel csv
-    DB = []
-    with open(filename, mode='r') as file:
-            csv_reader = reader(file)
-            for row_index, row in enumerate(csv_reader):
-                DB.append(row)
-    return DB
-
-def IsClicked(event, element): #check si on clique sur l'image
-    if element.rect.collidepoint(event.pos) and event.button ==1 and element in  game.drawed:
-        return True
-    return False
-
-def cleantext(texte, element): #fait bouger le texte légèrement de manière random (aurait pu s'appeler movingtext tbh)
-    for i in range(len(texte)):
-        element.text = element.text+texte[i]
-        game.gotext.pos = (170+random.randint(-10,10),30+random.randint(-10,10))
-        draw()
-        pygame.time.delay(100)
-
-
-def gameover():
-    music("../data/music/blank.mp3", False)
-    game.restart_button.image.set_alpha(0)
-    game.drawed = gameover_menu
-    fade_out(game.fade)
-    cleantext("Game over", game.gotext)
-    music("../data/music/laugh.mp3", False)
-    pygame.time.delay(300)
-    for i in range(10): # animation de la bouche
-        game.skullbottom.rect.y = 50
-        draw()
-        pygame.time.delay(100)
-        game.skullbottom.rect.y = 0
-        draw()
-        pygame.time.delay(125)
-    game.skullbottom.rect.y = 50
-    fade_in(game.restart_button)
-
-def loadmap(map): #pour éviter de modifier les listes contenants les elements dans les salles en voulant modifier drawed
-    game.drawed = []
-    for e in map:
-        game.drawed.append(e)
-
-def lose(): #la fonction lorsque on perd, sauvegarde le score (surtout utilisé dans le code pour sauvegarder le code plus que quand on perd en vrai)
-    #print(game.bestscores)
-    if game.score > int(game.bestscores[0][4]):
-        game.bestscores[0][4] = game.score
-        game.bestscores = [[int(game.bestscores[0][0]),int(game.bestscores[0][1]),int(game.bestscores[0][2]),int(game.bestscores[0][3]),int(game.bestscores[0][4])]] #permet de rendre le sort fonctionnel vu que les valeurs sont des str pour le csv
-        game.bestscores[0].sort(reverse=True) #permet de faire en sort que bestscores[0][4 soit toujours le plus petit score]
-        #print(game.bestscores)
-        with open("../data/hs.csv", mode='w',newline='') as file:
-            csv_writer = writer(file)
-            csv_writer.writerows(game.bestscores)
-    game.score = 0
-    game.ScoreDisplay.pos = (500,30)
+#Merci d'écrire toutes fonctions dans ce document
 
 #WINDOW
 pygame.display.set_caption("PORTRAIT")
@@ -107,6 +51,73 @@ game.drawed = menu
 gameover_menu = [game.restart_button, game.skullbottom, game.skulltop,game.gotext,  game.fade]
 rulesmenu = [game.menuBackground, game.rulestext, game.RetourCredits, game.fade]
 
+def read_csv(filename): #Pour lire n'importe quel fichier csv
+    """entrée : Un fichier csv
+       effet : On lit le fichier csv entrée"""
+    DB = []
+    with open(filename, mode='r') as file:
+            csv_reader = reader(file)
+            for row_index, row in enumerate(csv_reader):
+                DB.append(row)
+    return DB
+
+def IsClicked(event, element): #Vérifie si on clique sur l'image
+    """entrée : 
+       effet : """
+    if element.rect.collidepoint(event.pos) and event.button ==1 and element in  game.drawed:
+        return True
+    return False
+
+def cleantext(texte, element): #Fait bouger le texte légèrement de manière aléatoire
+    """entrée : 
+       effet : """
+    for i in range(len(texte)):
+        element.text = element.text+texte[i]
+        game.gotext.pos = (170+random.randint(-10,10),30+random.randint(-10,10))
+        draw()
+        pygame.time.delay(100)
+
+
+def gameover():
+    """Cette fonction se _________ """
+    music("../data/music/blank.mp3", False)
+    game.restart_button.image.set_alpha(0)
+    game.drawed = gameover_menu
+    fade_out(game.fade)
+    cleantext("Game over", game.gotext)
+    music("../data/music/laugh.mp3", False)
+    pygame.time.delay(300)
+    for i in range(10): # animation de la bouche
+        game.skullbottom.rect.y = 50
+        draw()
+        pygame.time.delay(100)
+        game.skullbottom.rect.y = 0
+        draw()
+        pygame.time.delay(125)
+    game.skullbottom.rect.y = 50
+    fade_in(game.restart_button)
+
+def loadmap(map): #pour éviter de modifier les listes contenants les elements dans les salles en voulant modifier drawed
+    """entrée : 
+       effet : """
+    game.drawed = []
+    for e in map:
+        game.drawed.append(e)
+
+def lose(): #la fonction lorsque on perd, sauvegarde le score (surtout utilisé dans le code pour sauvegarder le code plus que quand on perd en vrai)
+    #print(game.bestscores)
+    """__________________ """
+    if game.score > int(game.bestscores[0][4]):
+        game.bestscores[0][4] = game.score
+        game.bestscores = [[int(game.bestscores[0][0]),int(game.bestscores[0][1]),int(game.bestscores[0][2]),int(game.bestscores[0][3]),int(game.bestscores[0][4])]] #permet de rendre le sort fonctionnel vu que les valeurs sont des str pour le csv
+        game.bestscores[0].sort(reverse=True) #permet de faire en sort que bestscores[0][4 soit toujours le plus petit score]
+        #print(game.bestscores)
+        with open("../data/hs.csv", mode='w',newline='') as file:
+            csv_writer = writer(file)
+            csv_writer.writerows(game.bestscores)
+    game.score = 0
+    game.ScoreDisplay.pos = (500,30)
+
 def zoom(element):
     loadmap([game.zoombg, element,game.button_retour,game.fade])
 
@@ -136,7 +147,8 @@ def draw():#PERMET DE DESSINER LES OBJETS, IL N'UPDATE PAS L'ECRAN
 
 
 def anomalies(anomaly): #permet de choisir l'anomalie (elle ne permet pas de choisir si il y a une anomalie)
-    """Cette fonction permet de choisir quel anomalie va apparaitre
+    """entrée : ___________
+       effet : 
        Attention cette fonction ne determine pas si il y a ou non une annomalie"""
     #reset la salle au cas où l'anomaly change de place
     game.joconde.image = pygame.image.load("../data/Tableau/joconde.png")
@@ -178,15 +190,17 @@ def anomalies(anomaly): #permet de choisir l'anomalie (elle ne permet pas de cho
         return anomalyid
 
 def music(music, loop):
-    """Cette fonction gère la musique"""
+    """entrée : la musique que l'on souhaite lire et _______
+       effet : la musique choisie se joue"""
     pygame.mixer.music.load(music)
     if loop:
         pygame.mixer.music.play(-1)
     else:
         pygame.mixer.music.play(0)
 
-def fade_in(fade): #transition fondu au noir
-    """Cette fonction réalise une transition au noir pour passer du jeu au fade_out"""
+def fade_in(fade):
+    """entrée : 
+       effet : Cette fonction réalise une transition au noir pour passer du jeu au fade_out"""
     for i in range(int(256/32)):
         fade.image.set_alpha(i*32)
         pygame.time.delay(16)
@@ -194,8 +208,9 @@ def fade_in(fade): #transition fondu au noir
     fade.image.set_alpha(255)
     draw()
 
-def fade_out(fade): #transition fondu au noir inversé (on passe de noir au jeu)
-    """Cette fonction réalise une transition au noir pour passer fade_in a une autre page du jeu"""
+def fade_out(fade): 
+    """entrée : 
+       effet : Cette fonction réalise une transition au noir pour passer du fade_in à une autre page du jeu"""
     for i in range(int(256/32)):
         fade.image.set_alpha(255-i*32)
         pygame.time.delay(16)
