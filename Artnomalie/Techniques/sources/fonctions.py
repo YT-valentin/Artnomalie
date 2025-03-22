@@ -51,7 +51,7 @@ game.drawed = menu
 gameover_menu = [game.restart_button, game.skullbottom, game.skulltop,game.gotext,  game.fade]
 rulesmenu = [game.menuBackground, game.rulestext, game.RetourCredits, game.fade]
 
-def read_csv(filename): #Pour lire n'importe quel fichier csv
+def read_csv(filename):
     """entrée : Un fichier csv
        effet : On lit le fichier csv entrée"""
     DB = []
@@ -61,16 +61,16 @@ def read_csv(filename): #Pour lire n'importe quel fichier csv
                 DB.append(row)
     return DB
 
-def IsClicked(event, element): #Vérifie si on clique sur l'image
-    """entrée : 
-       effet : """
+def IsClicked(event, element): 
+    """entrée : la liste des évenements éffectué et l'élément que l'on veut vérifer 
+       effet : verifie si on a cliqué ou non sur un l'"élément" choisie en entrée"""
     if element.rect.collidepoint(event.pos) and event.button ==1 and element in  game.drawed:
         return True
     return False
 
-def cleantext(texte, element): #Fait bouger le texte légèrement de manière aléatoire
-    """entrée : 
-       effet : """
+def cleantext(texte, element):
+    """entrée : le message a afficher et l'endroit ou l'on souhaite le placer
+       effet : Fait bouger le texte légèrement de manière aléatoire"""
     for i in range(len(texte)):
         element.text = element.text+texte[i]
         game.gotext.pos = (170+random.randint(-10,10),30+random.randint(-10,10))
@@ -79,7 +79,7 @@ def cleantext(texte, element): #Fait bouger le texte légèrement de manière al
 
 
 def gameover():
-    """Cette fonction se _________ """
+    """Cette fonction lance l'animation de défaite"""
     music("../data/music/blank.mp3", False)
     game.restart_button.image.set_alpha(0)
     game.drawed = gameover_menu
@@ -98,15 +98,15 @@ def gameover():
     fade_in(game.restart_button)
 
 def loadmap(map): #pour éviter de modifier les listes contenants les elements dans les salles en voulant modifier drawed
-    """entrée : 
-       effet : """
+    """entrée : la liste contenant tout les objet d'un écran
+       effet : affiche les éléemnt de la liste "map" """
     game.drawed = []
     for e in map:
         game.drawed.append(e)
 
-def lose(): #la fonction lorsque on perd, sauvegarde le score (surtout utilisé dans le code pour sauvegarder le code plus que quand on perd en vrai)
+def lose(): 
     #print(game.bestscores)
-    """__________________ """
+    """sauvegarde le score dans le fichier csv"""
     if game.score > int(game.bestscores[0][4]):
         game.bestscores[0][4] = game.score
         game.bestscores = [[int(game.bestscores[0][0]),int(game.bestscores[0][1]),int(game.bestscores[0][2]),int(game.bestscores[0][3]),int(game.bestscores[0][4])]] #permet de rendre le sort fonctionnel vu que les valeurs sont des str pour le csv
@@ -119,9 +119,11 @@ def lose(): #la fonction lorsque on perd, sauvegarde le score (surtout utilisé 
     game.ScoreDisplay.pos = (500,30)
 
 def zoom(element):
+    """entrée : l'élement que l'on souhaite agrandir
+       effet : zoom l'élément choisie en entrée"""
     loadmap([game.zoombg, element,game.button_retour,game.fade])
 
-def draw():#PERMET DE DESSINER LES OBJETS, IL N'UPDATE PAS L'ECRAN
+def draw():
     """Cette fonction sert a dessiner les objet et a écrire les texte sur l'écran"""
     screen.fill((0,0,0)) # clear l'écran
     for i in range(len(game.drawed)):
@@ -129,7 +131,6 @@ def draw():#PERMET DE DESSINER LES OBJETS, IL N'UPDATE PAS L'ECRAN
             game.drawed[i].police = pygame.font.Font("../data/Font/RasterForge.ttf", game.drawed[i].fontSize) # pour changer la font si nécessaire
             game.drawed[i].display = game.drawed[i].police.render(str(game.drawed[i].text),1,(255,255,255)) #changer le texte si nécessaire
             screen.blit(game.drawed[i].display, game.drawed[i].pos)
-
         else:
             if game.drawed[i].rect.x == 1002: #placer les indicateurs d'anomalie lors du tuto de story
                 screen.blit(game.indicator.image, pygame.Rect(848, 290, 45, 45))
@@ -146,9 +147,9 @@ def draw():#PERMET DE DESSINER LES OBJETS, IL N'UPDATE PAS L'ECRAN
     pygame.display.flip() #update l'écran
 
 
-def anomalies(anomaly): #permet de choisir l'anomalie (elle ne permet pas de choisir si il y a une anomalie)
-    """entrée : ___________
-       effet : 
+def anomalies(anomaly): 
+    """entrée : un booleen qui dit si il y a ou non une annomalie 
+       effet : permet de choisir l'anomalie qui sera affichr ensuite
        Attention cette fonction ne determine pas si il y a ou non une annomalie"""
     #reset la salle au cas où l'anomaly change de place
     game.joconde.image = pygame.image.load("../data/Tableau/joconde.png")
@@ -190,8 +191,8 @@ def anomalies(anomaly): #permet de choisir l'anomalie (elle ne permet pas de cho
         return anomalyid
 
 def music(music, loop):
-    """entrée : la musique que l'on souhaite lire et _______
-       effet : la musique choisie se joue"""
+    """entrée : la musique que l'on souhaite lire et un booleen qui precise si l'on veut lire la musique une fois ou a l'infinie
+       effet : la musique choisie se joue dans une boucle finit ou non en fonction de la valeur de "loop" """
     pygame.mixer.music.load(music)
     if loop:
         pygame.mixer.music.play(-1)
@@ -199,7 +200,7 @@ def music(music, loop):
         pygame.mixer.music.play(0)
 
 def fade_in(fade):
-    """entrée : 
+    """entrée : l'objet sur lequel on souhaite réaliser la transition
        effet : Cette fonction réalise une transition au noir pour passer du jeu au fade_out"""
     for i in range(int(256/32)):
         fade.image.set_alpha(i*32)
@@ -209,7 +210,7 @@ def fade_in(fade):
     draw()
 
 def fade_out(fade): 
-    """entrée : 
+    """entrée : l'objet sur lequel on souhaite réaliser la transition
        effet : Cette fonction réalise une transition au noir pour passer du fade_in à une autre page du jeu"""
     for i in range(int(256/32)):
         fade.image.set_alpha(255-i*32)
