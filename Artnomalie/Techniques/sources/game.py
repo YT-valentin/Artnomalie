@@ -1,7 +1,8 @@
 import pygame
 from objects import *
 
-class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
+class Game: 
+#Merci de créer tout objets dans ce fichier !
 
     def __init__(self):
 
@@ -104,7 +105,6 @@ class Game: # MERCI DE INSTANCIER TOUTE OBJET ICI !
         self.cri_zoom.rect.y = 100
 
         #FOND
-
         self.menuBackground = Background()
         self.menuBackground.image = pygame.image.load("../data/Background/menubg.png")
         
