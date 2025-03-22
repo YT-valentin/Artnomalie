@@ -5,7 +5,7 @@ class Game:
 """Class pour les objets"""
 
     def __init__(self):
-        """On créer ici tous les objets"""
+        """Initialise un nouvelle objets"""
         #On créer ici tous les tableaux 
         self.joconde = Tableau()
         self.joconde.image = pygame.image.load("../data/Tableau/joconde.png")
@@ -104,7 +104,7 @@ class Game:
         self.cri_zoom.rect.x = 250
         self.cri_zoom.rect.y = 100
 
-        #On créer ici tous les fond
+        #On créer ici tous les fonds
         self.menuBackground = Background()
         self.menuBackground.image = pygame.image.load("../data/Background/menubg.png")
         
@@ -123,7 +123,7 @@ class Game:
         self.backgroundend = Background()
         self.backgroundend.image = pygame.image.load("../data/Background/endbg.png")
 
-            #texte credit
+        #On créer le texte à afficher dans les crédits 
         self.textecredit = Background()
         self.textecredit.image = pygame.image.load("../data/Background/creditbg.png")
 
@@ -136,12 +136,13 @@ class Game:
         self.score = -1
         #On choisit le mode
         self.mode = "Story"
-        #variable qui contient tous les scores
+        #Variable qui contient tous les scores
         self.bestscores = []
         self.drawed = []
 
         #Interface utilisateur
-            #MENU PRINCIPALE
+            #------Menu principale------ 
+        #On créer ici le logo du jeu 
         self.logo = Button()
         self.logo.image = pygame.image.load("../data/UI/artnomalielogo.png")
         self.logo.rect.x=10
@@ -149,7 +150,8 @@ class Game:
         self.logo.rect.width = 0
         self.logo.rect.height = 0
 
-            #Bouton Play
+            #----Boutons du menu------
+        #On créer ici le bouton play
         self.playButton = Button()
         self.playButton.rect.x = 350
         self.playButton.rect.y = 400
@@ -157,7 +159,7 @@ class Game:
         self.playButton.rect.width = 300
         self.playButton.rect.height = 180
 
-            #Score
+        #On créer ici le bouton pour accéder au classement des meilleurs scores
         self.scorebutton = Button()
         self.scorebutton.rect.x = 350
         self.scorebutton.rect.y = 600
@@ -165,7 +167,7 @@ class Game:
         self.scorebutton.rect.width = 300
         self.scorebutton.rect.height = 180
 
-            #Credits
+        #On créer ici le bouton pour accéder aux crédits
         self.credits = Button()
         self.credits.rect.x = 25
         self.credits.rect.y = 600
@@ -173,37 +175,54 @@ class Game:
         self.credits.rect.width = 300
         self.credits.rect.height = 180
 
-            #Leave Button
+        #On créer ici la croix de retour des credits
+        self.RetourCredits = Button()
+        self.RetourCredits.rect.x = 850
+        self.RetourCredits.rect.y = 5
+        self.RetourCredits.image = pygame.image.load("../data/UI/retourpainting.png")
+        self.RetourCredits.rect.width = 100
+        self.RetourCredits.rect.height = 100
+
+        #On créer ici le bouton pour quitter le jeu
         self.Leave = Button()
         self.Leave.rect.x = 675
         self.Leave.rect.y = 600
         self.Leave.image = pygame.image.load("../data/UI/exitpainting.png")
         self.Leave.rect.width = 300
         self.Leave.rect.height = 180
-        
-            #Bouton suivant
+
+            #----Boutons du jeu------
+        #On créer ici le bouton suivant (pas d'anomalie)
         self.continuebutton = Button()
         self.continuebutton.rect.x=810
         self.continuebutton.rect.y= 650
         self.continuebutton.rect.width = 200
         self.continuebutton.rect.height = 120
         
-            #Bouton retour
+        #On créer ici le bouton pour quitter un tableau zoomé
         self.button_retour = Button()
         self.button_retour.rect.x=50
         self.button_retour.rect.y= 650
         self.button_retour.image = pygame.image.load("../data/UI/fleche_retour.png") #change l'image de base
         self.button_retour.rect.width = 200
         self.button_retour.rect.height = 120
+
+        #On créer ici le bouton anomalie
+        self.exitbutton = Button()
+        self.exitbutton.rect.x=50
+        self.exitbutton.rect.y= 650
+        self.exitbutton.image = pygame.image.load("../data/UI/bouton_anomalies.png")
+        self.exitbutton.rect.width = 150
+        self.exitbutton.rect.height = 90
         
-        #SCORE
-            #Fond du score
+            #----Score------
+        #On créer ici le fond du score
         self.fond_score = Background()
         self.fond_score.rect.x = 412
         self.fond_score.rect.y = -5
         self.fond_score.image = pygame.image.load("../data/Background/fond_score.png")
 
-        #Classement des meilleurs scores
+        #On créer ici le classement des meilleurs scores
         self.Top1 = Texte()
         self.Top1.text = "Top 1: 0"
         self.Top1.pos = (30,30)
@@ -229,36 +248,21 @@ class Game:
         self.Top5.pos = (30,430)
         self.Top5.fontSize = 100
         
-            #Texte
+            #----Texte------
         self.ScoreDisplay = Texte()
         self.ScoreDisplay.text = "0"
         self.ScoreDisplay.pos = (500,30)
         self.ScoreDisplay.fontSize = 50
-
-            # Croix retour credits
-        self.RetourCredits = Button()
-        self.RetourCredits.rect.x = 850
-        self.RetourCredits.rect.y = 5
-        self.RetourCredits.image = pygame.image.load("../data/UI/retourpainting.png")
-        self.RetourCredits.rect.width = 100
-        self.RetourCredits.rect.height = 100
-
-            #exit
-        self.exitbutton = Button()
-        self.exitbutton.rect.x=50
-        self.exitbutton.rect.y= 650
-        self.exitbutton.image = pygame.image.load("../data/UI/bouton_anomalies.png")
-        self.exitbutton.rect.width = 150
-        self.exitbutton.rect.height = 90
-
-        # mode menu
+        
+            #----Choix des modes de jeu------
+        #On créer ici l'écran de choix des modes de jeu
         self.modeselect = Button()
         self.modeselect.image = pygame.image.load("../data/UI/select_mode_menu.png")
         self.modeselect.rect.width = 0
         self.modeselect.rect.x = 200
         self.modeselect.rect.y = 150
         
-        #story mode button
+        #On créer ici le bouton pour choisir le mode "story"
         self.storybutton = Button()
         self.storybutton.image = pygame.image.load("../data/UI/story_button.png")
         self.storybutton.rect.width = 400
@@ -266,7 +270,7 @@ class Game:
         self.storybutton.rect.x = 300
         self.storybutton.rect.y = 275
 
-        #infinite mode button
+        #On créer ici le bouton pour choisir le mode "infinie"
         self.infinite_button = Button()
         self.infinite_button.image = pygame.image.load("../data/UI/infinite_button.png")
         self.infinite_button.rect.width = 400
@@ -274,7 +278,7 @@ class Game:
         self.infinite_button.rect.x = 300
         self.infinite_button.rect.y = 410
 
-        #warning
+        #On créer ici le warning
         self.warning = Button()
         self.warning.image = pygame.image.load("../data/UI/warning_ui.png")
         self.warning.rect.width = 500
@@ -327,7 +331,7 @@ class Game:
         self.skullbottom.rect.x = 0
         self.skullbottom.rect.width = 0
 
-        #star symbol
+        #Symbole étoile
         self.indicator = Button()
         self.indicator.image = pygame.image.load("../data/UI/starsymbol.png")
         self.indicator.rect.height = 0
