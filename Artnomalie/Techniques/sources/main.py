@@ -4,14 +4,14 @@ from game import Game
 import random
 from fonctions import*
 
-anomalyluck = 50 #pourcentage de chance d'avoir une anomalie
+anomalyluck = 50 #Pourcentage de chance d'avoir une anomalie
 anomaly = False
-anomalyid = 0 #Contien le numero de l'anomalie
+anomalyid = 0 #Contient le numero de l'anomalie
 score = 0
 win = False
 game.bestscores = read_csv("../data/hs.csv") #Récupère les scores stockés dans le fichier csv
-warningremoval = 0 # Initialisation du compteur de temps pour le warning
-music("../data/music/Bolero.mp3", True) #Lance la musique du menu dans une boucle infinie
+warningremoval = 0 #Initialisation du compteur de temps pour le warning
+music("../data/music/Bolero.mp3", True) #Lancement de la musique du menu dans une boucle infinie
 
 loadmap([game.backgroundini,game.fade])
 fade_out(game.fade)
@@ -21,16 +21,16 @@ pygame.time.delay(1000)
 loadmap(menu)
 fade_out(game.fade)
 
-while running: #boucle principale (évite que la page se ferme toute seule)
-    pygame.time.delay(16) #force le jeu en 60fps
+while running: #Boucle principale (évite que la page se ferme toute seule)
+    pygame.time.delay(16) #Force le jeu en 60 images par secondes
 
     if game.warning in  game.drawed:
         warningremoval += 16
-        if warningremoval >=15000: #Enleve le warning après 5 secondes
+        if warningremoval >=15000: #Enleve le "warning" après 5 secondes
              game.warning.image.set_alpha(0)
         else:
             game.warning.image.set_alpha(255)
-    draw() #dessine les objets se trouvant dans la liste draw
+    draw() #dessine les objets se trouvant dans la liste "draw"
 
     if win == True : #S'active si on gagne
         game.restart_button.image.set_alpha(0)
@@ -51,26 +51,23 @@ while running: #boucle principale (évite que la page se ferme toute seule)
 
 
     for event in pygame.event.get(): #Récupère tout les évènement du joueur
-
+  
         if event.type == pygame.QUIT: #S'active si le joueur appuis sur la croix
-            lose() #met le score a jour
+            lose() #Sauvegarde le score a jour
             running=False
             pygame.quit()
             break
         elif event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_ESCAPE and  game.background1 in game.drawed: #détecet si on appuis sur échap en pleine game (fonctionne suelement dans la salle principale)
+            if event.key == pygame.K_ESCAPE and  game.background1 in game.drawed: #Détecte si on appuis sur "échap" pendant que l'on joue (fonctionne suelement dans la salle principale)
                 lose() #update le score
-                game.ScoreDisplay.pos = (500,30) #Recentre le score une fois arrivé à 10
+                game.ScoreDisplay.pos = (500,30) #Recentre le score une fois arrivé à 10 points
                 fade_in(game.fade)
                 loadmap(menu)
                 fade_out(game.fade)
         elif event.type == pygame.MOUSEBUTTONDOWN: #S'active si le joueur clique sur l'un des bouttons
 
                #------------------MENU--------------------------------
-
-            if IsClicked(event, game.playButton):      #------Permet de voir si on clique sur le bouton "Play", Clickable == True permet de cliquer 1 seule fois dessus et éviter de recliquer dessus une fois qu'il a disparu
-                fade_in(game.fade)
-                pygame.time.delay(1000)
+            if IsClicked(event, game.playButton):      #------Permet de voir si on clique sur le bouton "Play"
 
                 loadmap(mode_menu)
                 fade_out(game.fade)
@@ -85,10 +82,10 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                  pygame.event.clear()
 
             elif IsClicked(event, game.scorebutton):
-                game.bestscores = read_csv("../data/hs.csv") #Lis le fichier csv contenant les 5 meilleurs score
+                game.bestscores = read_csv("../data/hs.csv") #Lis le fichier csv contenant les 5 meilleurs scores
                 game.bestscores = [[int(game.bestscores[0][0]),int(game.bestscores[0][1]),int(game.bestscores[0][2]),int(game.bestscores[0][3]),int(game.bestscores[0][4])]]
                 game.bestscores[0].sort(reverse=True)
-                game.Top1.text = f"Top 1: {game.bestscores[0][0]}" #met les scores à jour si nécessaire
+                game.Top1.text = f"Top 1: {game.bestscores[0][0]}" #Met les scores à jour si nécessaire
                 game.Top2.text = f"Top 2: {game.bestscores[0][1]}"
                 game.Top3.text = f"Top 3: {game.bestscores[0][2]}"
                 game.Top4.text = f"Top 4: {game.bestscores[0][3]}"
@@ -101,7 +98,7 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                 running = False
                 pygame.quit()
                 break
-            elif IsClicked(event, game.continuebutton): #bouton continuer
+            elif IsClicked(event, game.continuebutton): #Bouton continuer
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 if anomaly == False: #Donne un point si il n'y a pas d'anomalie, met le score à 0 si il y en a une
@@ -124,14 +121,14 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                     game.ScoreDisplay.text = game.score #Modifie le score
                     anomaly = random.randint(1,100) <= anomalyluck #creer ou non une anomalie avec une probabilité de 50%
                     loadmap(first_room)
-                    anomalyid = anomalies(anomaly) # choisi l'anomalie si elle existe, la dessine et dessine tout les elements
+                    anomalyid = anomalies(anomaly) #Choisi l'anomalie si elle existe, la dessine et dessine tout les autres elements
                     fade_out(game.fade)
                     pygame.event.clear()
 
-            elif IsClicked(event, game.button_retour): #bouton retour
+            elif IsClicked(event, game.button_retour): #Bouton retour
                 fade_in(game.fade) #Doit tout le temps être la première ligne
                 pygame.time.delay(1000)
-                loadmap(first_room) #Temporaire, dépend de où nous sommes
+                loadmap(first_room) #Temporaire, dépend de là où nous sommes
                 if game.mode == "Story" and game.score == -1 and game.exitbutton in game.drawed:
                     game.drawed.remove(game.exitbutton)
                     game.drawed.insert(-1, game.indicator)
@@ -175,21 +172,17 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                         loadmap([game.fade])
                         draw()
 
-
-
-
-
                 if (game.mode == "Infinite" or anomaly) and win == False:
                     game.ScoreDisplay.text = game.score #change le score
                     anomaly = random.randint(1,100) <= anomalyluck #creer ou non une anomalie avec une probabilité de 50%
                     loadmap(first_room)
-                    anomalyid = anomalies(anomaly) #génère l'anomalie
+                    anomalyid = anomalies(anomaly) #Génère l'anomalie
                     fade_out(game.fade)
-                    pygame.event.clear() #doit être la dernière ligne juste après le fade out
+                    pygame.event.clear() #Doit être la dernière ligne juste après le fade out
             elif IsClicked(event, game.rules):
                 loadmap(rulesmenu)
-               #--------------------------------------------------------
-               #MODE MENU
+                
+               #--------Choix du mode de jeu---------------
             elif IsClicked(event, game.storybutton):
                 game.mode = "Story"
                 fade_in(game.fade)
@@ -201,7 +194,7 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                 anomalyid = anomalies(anomaly)
                 game.drawed.remove(game.exitbutton)
                 game.drawed.insert(-1, game.indicator)
-                game.drawed.insert(-1, game.warning) #Pour mettre le warning en avant dernier
+                game.drawed.insert(-1, game.warning) #Pour mettre le "warning" en avant dernier
                 fade_out(game.fade)
             elif IsClicked(event, game.infinite_button):
                 game.mode = "Infinite"
@@ -213,9 +206,9 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                 pygame.time.delay(1000)
                 loadmap(first_room)
                 fade_out(game.fade)
-                #OTHER
-
-            elif IsClicked(event, game.joconde): #Vérifie si on clique sur la joconde et si c'est un clique gauche
+                
+                #--------Tableau et autres objet cliquable------------
+            elif IsClicked(event, game.joconde): #Vérifie si on clique sur "La joconde" et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.joconde_zoom)
@@ -224,52 +217,57 @@ while running: #boucle principale (évite que la page se ferme toute seule)
                 fade_out(game.fade)
                 pygame.event.clear()
 
-            elif IsClicked(event, game.cri): #Vérifie si on clique sur la liberté guidant le peuple et si c'est un clique gauche
-                fade_in(game.fade)
-                pygame.time.delay(1000)
-                zoom(game.cri_zoom)
-                fade_out(game.fade)
-                pygame.event.clear()
-
-            elif IsClicked(event, game.delacroix): #Vérifie si on clique sur la liberté guidant le peuple et si c'est un clique gauche
+            elif IsClicked(event, game.delacroix): #Vérifie si on clique sur "La liberté guidant le peuple et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.delacroix_zoom)
                 fade_out(game.fade)
                 pygame.event.clear()
 
-            elif IsClicked(event, game.vermeer): #Vérifie si on clique sur la jaune fille a la perle et si c'est un clique gauche
+            elif IsClicked(event, game.vermeer): #Vérifie si on clique sur "la jeune fille à la perle" et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.vermeer_zoom)
                 fade_out(game.fade)
                 pygame.event.clear()
 
-            elif IsClicked(event, game.vangogh): #Vérifie si on clique sur la nuit étoilée et si c'est un clique gauche
+            elif IsClicked(event, game.vangogh): #Vérifie si on clique sur "La nuit étoilée" et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.vangogh_zoom)
                 fade_out(game.fade)
                 pygame.event.clear()
-            elif IsClicked(event, game.picasso): #Vérifie si on clique sur la nuit étoilée et si c'est un clique gauche
+
+            
+            elif IsClicked(event, game.cri): #Vérifie si on clique sur "le cri" et si c'est un clique gauche
+                fade_in(game.fade)
+                pygame.time.delay(1000)
+                zoom(game.cri_zoom)
+                fade_out(game.fade)
+                pygame.event.clear()
+                
+            elif IsClicked(event, game.picasso): #Vérifie si on clique sur la "Guernica" et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.picasso_zoom)
                 fade_out(game.fade)
                 pygame.event.clear()
-            elif IsClicked(event, game.monet): #Vérifie si on clique sur la nuit étoilée et si c'est un clique gauche
+                
+            elif IsClicked(event, game.monet): #Vérifie si on clique sur "Impression soleil levant" et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.monet_zoom)
                 fade_out(game.fade)
                 pygame.event.clear()
-            elif IsClicked(event, game.matisse): #Vérifie si on clique sur la nuit étoilée et si c'est un clique gauche
+                
+            elif IsClicked(event, game.matisse): #Vérifie si on clique sur "La Tristesse du roi" et si c'est un clique gauche
                 fade_in(game.fade)
                 pygame.time.delay(1000)
                 zoom(game.matisse_zoom)
                 fade_out(game.fade)
                 pygame.event.clear()
-            elif IsClicked(event, game.table):   #Vérifie si on clique sur la table basse et si c'est un clique gauche
+                
+            elif IsClicked(event, game.table):  #Vérifie si on clique sur la table basse et si c'est un clique gauche
                 if anomalyid == 1:
                     game.table.image = pygame.image.load("../data/Tableau/table_basse_ouverte_anomaly.png")
                 else:
