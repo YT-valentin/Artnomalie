@@ -26,7 +26,7 @@ while running: #Boucle principale (évite que la page se ferme toute seule)
 
     if game.warning in  game.drawed:
         warningremoval += 16
-        if warningremoval >=15000: #Enleve le "warning" après 5 secondes
+        if warningremoval >=13000: #Enleve le "warning" après 5 secondes
              game.warning.image.set_alpha(0)
         else:
             game.warning.image.set_alpha(255)
