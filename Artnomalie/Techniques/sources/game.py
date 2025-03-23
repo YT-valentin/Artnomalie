@@ -193,6 +193,14 @@ class Game:
         self.rules.rect.width = 100
         self.rules.rect.height = 96
 
+        #On créer ici le texte à afficher dans les règles 
+        self.rulestext = Button()
+        self.rulestext.image = pygame.image.load("../data/UI/rules.png")
+        self.rulestext.rect.x = 0
+        self.rulestext.rect.y = 0
+        self.rulestext.rect.width = 100
+        self.rulestext.rect.height = 96
+
             #----Boutons du jeu------
         #On créer ici le bouton suivant (pas d'anomalie)
         self.continuebutton = Button()
@@ -255,28 +263,6 @@ class Game:
         self.ScoreDisplay.text = "0"
         self.ScoreDisplay.pos = (500,30)
         self.ScoreDisplay.fontSize = 50
-
-        #On créer ici le texte qui s'affiche lorsque l'on perd
-        self.gotext = Texte()
-        self.gotext.text = ""
-        self.gotext.pos = (170,30)
-        self.gotext.fontSize = 100
-
-        #On créer ici le contexte initiale du mode "story"
-        self.warning = Button()
-        self.warning.image = pygame.image.load("../data/UI/warning_ui.png")
-        self.warning.rect.width = 500
-        self.warning.rect.height = 200
-        self.warning.rect.x = 150
-        self.warning.rect.y = 50
-
-        #On créer ici le texte à afficher dans les règles 
-        self.rulestext = Button()
-        self.rulestext.image = pygame.image.load("../data/UI/rules.png")
-        self.rulestext.rect.x = 0
-        self.rulestext.rect.y = 0
-        self.rulestext.rect.width = 100
-        self.rulestext.rect.height = 96
         
             #----Choix des modes de jeu------
         #On créer ici l'écran de choix des modes de jeu
@@ -302,6 +288,22 @@ class Game:
         self.infinite_button.rect.x = 300
         self.infinite_button.rect.y = 410
 
+                #-----Autre------
+        #On créer ici le texte qui s'affiche lorsque l'on perd ou gagne
+        self.gotext = Texte()
+        self.gotext.text = ""
+        self.gotext.pos = (170,30)
+        self.gotext.fontSize = 100
+
+        #On créer ici le contexte initiale du mode "story"
+        self.warning = Button()
+        self.warning.image = pygame.image.load("../data/UI/warning_ui.png")
+        self.warning.rect.width = 500
+        self.warning.rect.height = 200
+        self.warning.rect.x = 150
+        self.warning.rect.y = 50
+        
+        #bouton pour recommencer (utilisé lorsqu'on gane ou perd)
         self.restart_button = Button()
         self.restart_button.image = pygame.image.load("../data/UI/restart_button.png")
         self.restart_button.rect.width = 263
@@ -309,7 +311,6 @@ class Game:
         self.restart_button.rect.x = 356
         self.restart_button.rect.y = 552
         
-                #-----Autre------
         #table basse
         self.table = Tableau()
         self.table.image = pygame.image.load("../data/Tableau/table_basse.png")
