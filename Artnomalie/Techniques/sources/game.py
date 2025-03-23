@@ -123,14 +123,8 @@ class Game:
         self.backgroundend = Background()
         self.backgroundend.image = pygame.image.load("../data/Background/endbg.png")
 
-        #On créer le texte à afficher dans les crédits 
         self.textecredit = Background()
         self.textecredit.image = pygame.image.load("../data/Background/creditbg.png")
-
-        self.paycheck = Button()
-        self.paycheck.rect.x = 100
-        self.paycheck.rect.y = 200
-        self.paycheck.image = pygame.image.load("../data/UI/paycheck.png")
 
         #On créer ici toutes les variables
         self.score = -1
@@ -341,4 +335,10 @@ class Game:
         self.skullbottom.rect.y = 0
         self.skullbottom.rect.x = 0
         self.skullbottom.rect.width = 0
+
+        #Le chèque lorsque on gagne
+        self.paycheck = Button()
+        self.paycheck.rect.x = 100
+        self.paycheck.rect.y = 200
+        self.paycheck.image = pygame.image.load("../data/UI/paycheck.png")
 
