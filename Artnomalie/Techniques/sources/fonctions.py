@@ -167,7 +167,7 @@ def anomalies(anomaly):
     game.matisse_zoom.image = pygame.image.load("../data/Tableau/Matisse_big.png")
     game.monet_zoom.image = pygame.image.load("../data/Tableau/Monet_big.jpg")
     game.picasso_zoom.image = pygame.image.load("../data/Tableau/picasso_zoom.png")
-    game.joconde.rect.x = 582
+    game.joconde.rect.x = 852
     game.joconde.rect.y = 269
     music("../data/music/Für_Elise.mp3", True)
     #Permet de choisir l'anomaly
