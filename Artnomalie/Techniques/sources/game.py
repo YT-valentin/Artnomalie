@@ -2,7 +2,7 @@ import pygame
 from objects import *
 
 class Game: 
-"""Class pour les objets"""
+    """Class pour les objets"""
 
     def __init__(self):
         """Initialise un nouvelle objets"""
